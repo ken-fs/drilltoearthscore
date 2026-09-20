@@ -90,11 +90,13 @@ pnpm submit-indexnow -- --site https://drilltoearthscore.xyz   # 推送 URL 给 
 
 | 项 | 状态 |
 | --- | --- |
-| 域名 `drilltoearthscore.xyz` | ✅ 已购买 |
-| GitHub 仓库 `ken-fs/drilltoearthscore` | ✅ 已推送（main = da8f394） |
+| 域名 `drilltoearthscore.xyz` | ✅ 已购买（NS 仍在 Spaceship，待转 Cloudflare） |
+| GitHub 仓库 `ken-fs/drilltoearthscore` | ✅ 已推送（main） |
+| Cloudflare Worker `drilltoearthscore` | ✅ 已部署 · https://drilltoearthscore.493129720ljw.workers.dev |
+| **Cloudflare Git 集成（Workers Builds）** | ⚠️ **待确认**——首次创建走的是 `dash_template`（模板占位 Worker，无 assets），已用本地 `wrangler deploy` 救活；需确认 push 能否自动触发构建 |
 | **GitHub 仓库变量 `SITE_URL`** | ❌ **必设**，否则 CI `check` job 失败 |
 | **GitHub 仓库变量 `INDEXNOW_KEY`** | ⬜ 可选（不设则 IndexNow workflow 跳过） |
-| Cloudflare Workers 项目 `drilltoearthscore` | ⬜ 待创建并接 Git |
+| 自定义域名绑定 | ⬜ 待 NS 转入 Cloudflare 后绑 `drilltoearthscore.xyz` |
 | GSC 属性 `sc-domain:drilltoearthscore.xyz` | ⬜ 待接入 |
 
 **两个仓库变量怎么设**（Settings → Secrets and variables → Actions → **Variables** 标签页）：
@@ -112,6 +114,24 @@ gh variable set INDEXNOW_KEY --body "99483352b40630153d5901e3a14ed160" -R ken-fs
 ```
 
 **为什么 SITE_URL 必设**：`.github/actions/gates/action.yml` 的 check-config 步骤用 `vars.SITE_URL`，未设时回落到 demo 域名 `https://anvil.wiki`，与 `site.ts` 的 `drilltoearthscore.xyz` 不符 → 报「canonical/og:url/sitemap 会指向错站」并失败。本 fork 用 `wrangler.jsonc` 而非 `.toml`，没有别的回退源。
+
+### 构建命令里的 SITE_URL 不能省（实测过的坑）
+
+```
+不带 SITE_URL：  canonical ✅ drilltoearthscore.xyz（来自 site.ts 兜底）
+                 sitemap   ❌ https://anvil.wiki/      ← 会把 demo 域名提交给 Google
+
+带 SITE_URL：    canonical ✅ + sitemap ✅ 全部 drilltoearthscore.xyz
+```
+
+根因：`astro.config.ts` 的兜底写死 `'https://anvil.wiki'`（上游 demo 域名），与 `src/config/site.ts` 的兜底（`https://${site.domain}`）**不一致**。漏传 SITE_URL 时 canonical 看着是对的，只有 sitemap 静默指向别人家 —— 这个不一致值得上游修。
+
+**Cloudflare 侧**（Workers 项目 → Settings → Build）：
+
+```
+构建命令  SITE_URL=https://drilltoearthscore.xyz pnpm run build
+部署命令  npx wrangler deploy
+```
 
 首次推送后的 CI 实况：`e2e-template` ✅ · `ops-toolkit` ✅（typecheck + tests + build 全过）· `check` ❌（就是上面这个 SITE_URL）· `IndexNow` skipped。
 
@@ -138,9 +158,10 @@ gh variable set INDEXNOW_KEY --body "99483352b40630153d5901e3a14ed160" -R ken-fs
 | 项 | 地址 |
 | --- | --- |
 | 游戏 | https://www.roblox.com/games/101906032112547/Drill-to-Earth-s-Core |
+| 线上（临时） | https://drilltoearthscore.493129720ljw.workers.dev |
 | GitHub | https://github.com/ken-fs/drilltoearthscore |
+| Cloudflare | Workers & Pages → drilltoearthscore（account `70716e073f0925c564bafd0eaf0be307`） |
 | GSC 属性 | `sc-domain:drilltoearthscore.xyz`（待接入） |
-| Cloudflare | Workers & Pages → drilltoearthscore（待接线） |
 | 验收 | `node ~/Desktop/david/Ship/scripts/verify.mjs`（待加入基线） |
 | 上游模板 | https://github.com/PNGTRID/AnvilWiki |
 
