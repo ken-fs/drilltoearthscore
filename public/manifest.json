@@ -1,0 +1,21 @@
+{
+  "name": "Drill to Earth's Core Wiki",
+  "short_name": "Drill to Earth's Core",
+  "description": "Drill to Earth's Core guides: all 14 classes ranked, drill upgrades, dungeon routes, and 100 KM strategies for the Roblox mining RPG.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e9590c",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "$schema": "../../docs/home.schema.json",
+  "site": {
+    "name": "Drill to Earth's Core Wiki",
+    "shortName": "Drill to Earth's Core",
+    "description": "Drill to Earth's Core guides: all 26 classes with Core prices, drill upgrade costs, layer depths, and a 100 KM run plan for the Roblox mining RPG.",
+    "tagline": "Dig deeper. Loot harder. Reach the core.",
+    "legalNotice": "Fan-made resource. Not affiliated with Game Name. or Roblox Corporation."
+  },
+  "nav": {
+    "home": "Home",
+    "toggleTheme": "Toggle theme",
+    "menu": "Menu",
+    "close": "Close",
+    "search": "Search",
+    "language": "Language",
+    "classes": "Classes",
+    "guides": "Guides",
+    "items": "Items"
+  },
+  "search": {
+    "placeholder": "Search the wiki...",
+    "noResults": "No matches found",
+    "loadError": "Search failed to load — refresh the page and try again."
+  },
+  "shared": {
+    "lastUpdated": "Last updated",
+    "publishedOn": "Published",
+    "noArticles": "No articles yet. Check back soon!",
+    "defaultListDescription": "Browse every {title} article — walkthroughs, tips, tier lists and up-to-date reference tables, all in one place.",
+    "relatedArticles": "Related Articles",
+    "onThisPage": "On this page",
+    "browseAll": "Browse all",
+    "viewAll": "View all",
+    "commentsHeading": "Comments",
+    "share": "Share",
+    "copyLink": "Copy link",
+    "copied": "Copied!",
+    "consentText": "We use cookies for analytics and ads to keep this site free.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "consentTitle": "Cookies",
+    "bossCard": {
+      "title": "Boss Overview",
+      "hp": "HP",
+      "weakness": "Weakness",
+      "resistant": "Resistant",
+      "location": "Location",
+      "level": "Rec. Level"
+    },
+    "codesTable": {
+      "active": "Active Codes",
+      "expired": "Expired Codes",
+      "reward": "Reward",
+      "expires": "Expires",
+      "source": "Source",
+      "code": "Code"
+    },
+    "codesFaq": [
+      {
+        "question": "How do I redeem codes?",
+        "answer": "Open the game, click the settings gear in the top-right, paste your code into the Redeem Code field, and confirm. Codes are case-sensitive."
+      },
+      {
+        "question": "Why do codes stop working?",
+        "answer": "Codes expire on a schedule set by the developer (usually monthly or tied to update milestones), and some are one-per-account. This page is re-tested regularly."
+      },
+      {
+        "question": "How often are new codes released?",
+        "answer": "New codes typically arrive with each major game update. Bookmark this page and check back after every patch."
+      },
+      {
+        "question": "Do codes expire?",
+        "answer": "Yes — most codes have an expiry date, shown next to each code. Expired codes move to the expired table below."
+      }
+    ],
+    "possiblyOutdated": "This guide was last checked on",
+    "outdatedNote": "— the game may have changed since. Some details could be out of date.",
+    "prevArticle": "Previous",
+    "nextArticle": "Next",
+    "minuteRead": "min read",
+    "wasThisHelpful": "Was this helpful?",
+    "feedbackThanks": "Thanks for the feedback!",
+    "sponsoredLabel": "Sponsored",
+    "relatedVideos": "Related videos",
+    "gallery": "Gallery",
+    "gameVersion": "Game version",
+    "allTags": "All Tags",
+    "tagsIndexDescription": "Browse all articles by topic.",
+    "articlesCount": "articles",
+    "recentTitle": "Recent Updates",
+    "recentDescription": "The latest articles and updates across the wiki, newest first.",
+    "sponsorTitle": "Support this wiki",
+    "sponsorText": "If these guides helped you, consider supporting the site.",
+    "sponsorButton": "Support us",
+    "notFoundSearchHint": "Try searching the wiki instead.",
+    "notFoundPopular": "Popular pages",
+    "galleryLabels": {
+      "close": "Close",
+      "prev": "Previous image",
+      "next": "Next image"
+    },
+    "quickAnswer": "Quick Answer",
+    "skipToContent": "Skip to content",
+    "tapToCopy": "Tap to copy",
+    "open": "Open",
+    "playVideo": "Play video",
+    "watchVideo": "Watch video",
+    "gameTrailer": "trailer",
+    "closeAd": "Close ad",
+    "adLabel": "Advertisement",
+    "codesFaqTitle": "Codes FAQ",
+    "faqTitle": "FAQ",
+    "toggleTheme": "Toggle theme",
+    "themeToggleTitle": "Light / Dark / AMOLED black",
+    "fallbackNotice": "English fallback",
+    "copyQuickAnswer": "Copy quick answer",
+    "feedbackYes": "Yes",
+    "feedbackNo": "No",
+    "breadcrumbAria": "Breadcrumb",
+    "paginationAria": "Article pagination"
+  },
+  "overview": {
+    "classes": {
+      "overviewTitle": "All Classes",
+      "overviewDescription": "All 26 Drill to Earth's Core classes with Core prices, release dates and roles — from Miner at 100 Cores to Goblin King, Bounty Hunter, Pirate and Executioner at 30,000."
+    },
+    "guides": {
+      "overviewTitle": "All Guides",
+      "overviewDescription": "Drill to Earth's Core walkthroughs: every layer depth and boss wall HP value, how to earn Cores, a 100 KM run plan, and a first-hour beginner guide."
+    },
+    "items": {
+      "overviewTitle": "All Items",
+      "overviewDescription": "Drill to Earth's Core item data: every drill upgrade with its Coin cost, rarity and per-level effect, plus the three-card combo that breaks boss walls fastest."
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Drill to Earth's Core Wiki — Classes, Layers & Drill Upgrades",
+      "description": "Drill to Earth's Core guides: all 26 classes with Core prices, drill upgrade costs, layer depths, and a 100 KM run plan for the Roblox mining RPG."
+    },
+    "updates": {
+      "title": "Recent updates"
+    },
+    "popular": {
+      "badge": "Popular",
+      "title": "Most read",
+      "quickLinks": [
+        {
+          "label": "Classes",
+          "href": "/classes"
+        },
+        {
+          "label": "Guides",
+          "href": "/guides"
+        },
+        {
+          "label": "Items",
+          "href": "/items"
+        }
+      ]
+    },
+    "closingCta": {
+      "title": "Start your Drill to Earth's Core journey",
+      "description": "Bookmark this wiki and check back after every game update.",
+      "primary": "Browse all",
+      "secondary": "Join the community"
+    },
+    "hero": {
+      "badge": "Season 1",
+      "title": "Drill to Earth's Core Wiki",
+      "description": "All 26 classes with Core prices, every layer depth and boss wall HP, full drill upgrade costs, and a 100 KM run plan — checked against the game's own unlock badges.",
+      "ctaPrimary": "Start with the basics",
+      "ctaSecondary": "Browse all classes",
+      "videoId": ""
+    },
+    "start": {
+      "badge": "Quick start",
+      "title": "New here?",
+      "cards": [
+        {
+          "number": "1",
+          "title": "Beginner guide",
+          "description": "Your first hour, step by step",
+          "icon": "lucide:book-open",
+          "href": "/guides/beginner-guide"
+        },
+        {
+          "number": "2",
+          "title": "All 26 classes",
+          "description": "Miner at 100 Cores up to 30,000",
+          "icon": "lucide:users",
+          "href": "/classes/all-classes"
+        },
+        {
+          "number": "3",
+          "title": "Drill upgrades",
+          "description": "Costs, rarities, best cards",
+          "icon": "lucide:wrench",
+          "href": "/items/drill-upgrades"
+        }
+      ]
+    },
+    "explore": {
+      "title": "Explore",
+      "description": "The essentials",
+      "modules": [
+        {
+          "order": 1,
+          "name": "Layer depths",
+          "description": "Eleven layers from 0 m to 1,000,000 m — with the boss wall HP you need to break",
+          "href": "/guides/layers-and-depths",
+          "displayType": "labeled-cards",
+          "highlights": [
+            {
+              "label": "Grass Layer",
+              "detail": "0 – 10,000 m · boss wall 100 – 500 HP",
+              "badge": "Start"
+            },
+            {
+              "label": "Clay Layer",
+              "detail": "17,000 – 24,000 m · Void Clay Wall empties your fuel",
+              "badge": "Trap"
+            },
+            {
+              "label": "Toxic Layer",
+              "detail": "41,000 – 51,000 m · boss wall 25,000 HP",
+              "badge": "Step up"
+            },
+            {
+              "label": "Heart of the Earth",
+              "detail": "1,000,000 m+ · boss wall 5,000,000 HP and Wolf Bat",
+              "badge": "Endgame"
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "Class meta",
+          "description": "Ranked by what each class actually fixes — drill power, survival, economy or combat",
+          "href": "/classes/best-classes",
+          "displayType": "badge-list",
+          "highlights": [
+            {
+              "label": "Driller",
+              "detail": "5,000 Cores — drill power and cheaper upgrades",
+              "badge": "S"
+            },
+            {
+              "label": "Lucky Looter",
+              "detail": "10,000 Cores — chest and ore multiplier",
+              "badge": "S"
+            },
+            {
+              "label": "Pirate",
+              "detail": "30,000 Cores — gold bars and a cannon",
+              "badge": "S"
+            },
+            {
+              "label": "Reaper",
+              "detail": "10,000 Cores — soul orbs and the Soul Lantern",
+              "badge": "A"
+            }
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Common questions",
+      "items": [
+        {
+          "question": "How many classes are in Drill to Earth's Core?",
+          "answer": "There are 26 unlockable classes as of September 2026, released between 13 March and 18 September. Core prices run from 100 for Miner up to 30,000 for Goblin King, Bounty Hunter, Pirate and Executioner. The all classes page lists every one with its release date."
+        },
+        {
+          "question": "Does Drill to Earth's Core have codes?",
+          "answer": "No. The game has no promo codes and no Codes button in the lobby. Cores — the currency that buys classes — come from achievements, daily quests, chests and breaking boss walls, and any page offering free Cores for a code is describing a different Roblox game."
+        },
+        {
+          "question": "How deep does Drill to Earth's Core go?",
+          "answer": "Eleven layers sit between the surface and 1,000,000 m, then the Heart of the Earth continues beyond it. Boss wall HP climbs from 100 in the Grass Layer to 500,000 before the 100 km mark and 5,000,000 at the Heart of the Earth. The layers page has the full depth and HP table."
+        },
+        {
+          "question": "What is the best drill upgrade?",
+          "answer": "RPM Overclock, Ultra Drill and Power Burst used together. RPM Overclock makes the drill hit more often, Ultra Drill adds stacking damage while drilling nonstop, and Power Burst multiplies whatever has accumulated during a 5 second window. No combat upgrade keeps pace with boss wall HP on its own."
+        },
+        {
+          "question": "How do I reach 100 KM?",
+          "answer": "Prepare for three failure points: carry 3 to 7 coal or more for the Void Clay Wall Boss at 17,000 m that empties your fuel, expect the 25,000 HP boss wall step at 41,000 m, and bring 1 to 2 Golden Medkits or a Revive Kit for Wolf Bat at the Glowing Core wall. The 100 KM guide walks through the whole run."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "playGame": "Play Drill to Earth's Core",
+    "officialDiscord": "Official Discord",
+    "officialYoutube": "Official YouTube",
+    "officialTwitter": "Official Twitter",
+    "officialReddit": "Official Reddit",
+    "about": "About",
+    "faq": "FAQ",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "Copyright",
+    "contact": "Contact",
+    "copyrightText": "© 2026 Drill to Earth's Core Wiki. All rights reserved.",
+    "community": "Community",
+    "legal": "Legal"
+  }
+}
