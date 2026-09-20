@@ -64,7 +64,7 @@ export interface SiteConfig {
 export const site: SiteConfig = {
   name: 'Drill to Earth\'s Core Wiki',
   shortName: 'Drill to Earth\'s Core',
-  description: 'Drill to Earth\'s Core guides: all 14 classes ranked, drill upgrades, dungeon routes, and 100 KM strategies for the Roblox mining RPG.',
+  description: 'Drill to Earth\'s Core guides: all 26 classes with Core prices, drill upgrade costs, layer depths, and a 100 KM run plan for the Roblox mining RPG.',
   domain: 'drilltoearthscore.xyz',
   tagline: 'Dig deeper. Loot harder. Reach the core.',
   legalNotice: 'Fan-made resource. Not affiliated with Game Name. or Roblox Corporation.',
