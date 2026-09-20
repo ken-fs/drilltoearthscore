@@ -91,10 +91,29 @@ pnpm submit-indexnow -- --site https://drilltoearthscore.xyz   # 推送 URL 给 
 | 项 | 状态 |
 | --- | --- |
 | 域名 `drilltoearthscore.xyz` | ✅ 已购买 |
+| GitHub 仓库 `ken-fs/drilltoearthscore` | ✅ 已推送（main = da8f394） |
+| **GitHub 仓库变量 `SITE_URL`** | ❌ **必设**，否则 CI `check` job 失败 |
+| **GitHub 仓库变量 `INDEXNOW_KEY`** | ⬜ 可选（不设则 IndexNow workflow 跳过） |
 | Cloudflare Workers 项目 `drilltoearthscore` | ⬜ 待创建并接 Git |
 | GSC 属性 `sc-domain:drilltoearthscore.xyz` | ⬜ 待接入 |
-| GitHub 仓库 | ⬜ 待创建 |
-| `vars.SITE_URL` / `vars.INDEXNOW_KEY` | ⬜ 待配置（IndexNow key 已提交 `public/99483352b40630153d5901e3a14ed160.txt`） |
+
+**两个仓库变量怎么设**（Settings → Secrets and variables → Actions → **Variables** 标签页）：
+
+```
+SITE_URL      = https://drilltoearthscore.xyz
+INDEXNOW_KEY  = 99483352b40630153d5901e3a14ed160
+```
+
+或用 gh CLI（需先 `gh auth login`）：
+
+```bash
+gh variable set SITE_URL --body "https://drilltoearthscore.xyz" -R ken-fs/drilltoearthscore
+gh variable set INDEXNOW_KEY --body "99483352b40630153d5901e3a14ed160" -R ken-fs/drilltoearthscore
+```
+
+**为什么 SITE_URL 必设**：`.github/actions/gates/action.yml` 的 check-config 步骤用 `vars.SITE_URL`，未设时回落到 demo 域名 `https://anvil.wiki`，与 `site.ts` 的 `drilltoearthscore.xyz` 不符 → 报「canonical/og:url/sitemap 会指向错站」并失败。本 fork 用 `wrangler.jsonc` 而非 `.toml`，没有别的回退源。
+
+首次推送后的 CI 实况：`e2e-template` ✅ · `ops-toolkit` ✅（typecheck + tests + build 全过）· `check` ❌（就是上面这个 SITE_URL）· `IndexNow` skipped。
 
 ### 踩过的坑（从 raceforeggs 移植的修复）
 
@@ -119,6 +138,7 @@ pnpm submit-indexnow -- --site https://drilltoearthscore.xyz   # 推送 URL 给 
 | 项 | 地址 |
 | --- | --- |
 | 游戏 | https://www.roblox.com/games/101906032112547/Drill-to-Earth-s-Core |
+| GitHub | https://github.com/ken-fs/drilltoearthscore |
 | GSC 属性 | `sc-domain:drilltoearthscore.xyz`（待接入） |
 | Cloudflare | Workers & Pages → drilltoearthscore（待接线） |
 | 验收 | `node ~/Desktop/david/Ship/scripts/verify.mjs`（待加入基线） |
