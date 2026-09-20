@@ -90,14 +90,27 @@ pnpm submit-indexnow -- --site https://drilltoearthscore.xyz   # 推送 URL 给 
 
 | 项 | 状态 |
 | --- | --- |
-| 域名 `drilltoearthscore.xyz` | ✅ 已购买（NS 仍在 Spaceship，待转 Cloudflare） |
-| GitHub 仓库 `ken-fs/drilltoearthscore` | ✅ 已推送（main） |
-| Cloudflare Worker `drilltoearthscore` | ✅ 已部署 · https://drilltoearthscore.493129720ljw.workers.dev |
-| **Cloudflare Git 集成（Workers Builds）** | ⚠️ **待确认**——首次创建走的是 `dash_template`（模板占位 Worker，无 assets），已用本地 `wrangler deploy` 救活；需确认 push 能否自动触发构建 |
-| **GitHub 仓库变量 `SITE_URL`** | ❌ **必设**，否则 CI `check` job 失败 |
-| **GitHub 仓库变量 `INDEXNOW_KEY`** | ⬜ 可选（不设则 IndexNow workflow 跳过） |
-| 自定义域名绑定 | ⬜ 待 NS 转入 Cloudflare 后绑 `drilltoearthscore.xyz` |
+| 域名 `drilltoearthscore.xyz` | ✅ NS 已转 Cloudflare（ariella/seamus） |
+| GitHub 仓库 `ken-fs/drilltoearthscore` | ✅ 已推送 |
+| Cloudflare Worker + Git 集成 | ✅ 已接通，push → 自动构建 → 自动部署（用 `.well-known/anvilwiki-deploy.txt` 的 commit SHA 验证过） |
+| 自定义域 `drilltoearthscore.xyz` | ✅ 已绑定，HTTPS 200，Let's Encrypt 证书已签（至 2026-12-19） |
+| **GitHub 仓库变量 `SITE_URL`** | ❌ **必设**，否则 CI `check` job 失败（不影响部署） |
+| GitHub 仓库变量 `INDEXNOW_KEY` | ⬜ 可选（不设则 IndexNow workflow 跳过） |
+| `www.drilltoearthscore.xyz` | ⬜ 可选，尚未绑定（现在返回 1016） |
 | GSC 属性 `sc-domain:drilltoearthscore.xyz` | ⬜ 待接入 |
+
+**线上验收结果（2026-09-20）**：
+
+```
+页面健康     17 个 URL 全 200（含 8 篇文章 + 3 分类页 + 法务页）
+技术文件     robots / sitemap-index / sitemap-0 / rss / llms.txt / manifest / favicon / IndexNow key 全 200
+sitemap      48 条，全部 https://drilltoearthscore.xyz（域名零污染）
+robots.txt   Allow: / + Sitemap 指向正确
+安全头       HSTS 31536000 / nosniff / SAMEORIGIN / referrer-policy
+JSON-LD      Organization + Article + BreadcrumbList + FAQPage(5 题)
+浏览器渲染   首页 / all-classes / layers-and-depths 均无报错
+部署标记     线上 commit SHA == 本地 HEAD
+```
 
 **两个仓库变量怎么设**（Settings → Secrets and variables → Actions → **Variables** 标签页）：
 
