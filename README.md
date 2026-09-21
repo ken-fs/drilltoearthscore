@@ -77,6 +77,13 @@ curl "https://thumbnails.roblox.com/v1/assets?assetIds=<iconImageId>&size=512x51
 
 **`public/images/hero.webp`**：首页/非文章页的默认 OG 图，用官方截图 + 轻度品牌遮罩合成（社交卡片实际只有 ~500px 宽，所以**不加角标、不加文字**，缩略后会变噪点）。
 
+**首页 hero 实机图**（`src/components/home/HomePage.astro`）：左文右图的 grid，移动端堆叠；图用官方截图 + `astro:assets` 的 `<Image>` 出响应式 srcset。
+
+两处 fork 改动，换游戏时要知道：
+
+1. **`loading="eager"` + `fetchpriority="high"`**：移动端 hero 图就是 LCP 元素，懒加载会拖慢 Core Web Vitals 唯一真正计量的那一次绘制。源图 767px 宽，所以 `widths={[400, 767]}` 封顶，不做放大。
+2. **删掉了上游的巨型水印文字**：上游用 `text-[18vw]` 的游戏名水印当视觉锚点，注释写的是「不需要图片资源」。本 fork 有真图了，两个视觉锚点会互相打架，而且淡色大字正好压在标题背后。
+
 **常用命令**：
 
 ```bash
