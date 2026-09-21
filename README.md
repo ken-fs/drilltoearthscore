@@ -210,7 +210,9 @@ gh variable set INDEXNOW_KEY --body "99483352b40630153d5901e3a14ed160" -R ken-fs
 | 验收 | `node ~/Desktop/david/Ship/scripts/verify.mjs`（待加入基线） |
 | 上游模板 | https://github.com/PNGTRID/AnvilWiki |
 
-## 内容清单（2026-09-21 第一批，8 篇）
+## 内容清单（2026-09-21，22 篇）
+
+### 第一批（8 篇）
 
 | 分类 | 页面 | 数据来源 |
 | --- | --- | --- |
@@ -222,6 +224,20 @@ gh variable set INDEXNOW_KEY --body "99483352b40630153d5901e3a14ed160" -R ken-fs
 | guides | reach-100km（三大失败点 + 升级组合） | 地层数据 + 社区共识 |
 | guides | beginner-guide（第一小时） | 综合 |
 | items | drill-upgrades（5 稀有度全表 + 成本曲线） | Fandom Drill Upgrades 页 |
+
+### 第二批（14 篇）
+
+| 分类 | 页面 | 数据来源 |
+| --- | --- | --- |
+| classes | **10 个单职业页**：miner / driller / tank / healer / scout / bruiser / gunslinger / mechanic / demolitionist / goblin-king | Fandom Classes 表（L1–L4 被动 + 解锁条件 + 起始装备，全部真实数值） |
+| guides | enemies-and-mutations（18 敌 + 4 悬赏 + 7 变异全表） | Fandom Enemies 页（HP/速度/伤害/售价/燃料/掉落） |
+| guides | structures-and-dungeons（8 建筑 + 难度分级 + 掉落） | Fandom Structures 页 |
+| items | armor-tiers（7 套护甲 + 全套装 badge） | Roblox badge API + 掉落表 |
+| items | ores-and-bars（7 种矿石 + 成就奖励 + 熔炼） | Fandom Items 页 + badge 奖励表 |
+
+**内容健康度**：102 页构建 · 3123 条内链全通 · **孤岛页 0**（每篇都有入站链接）· 184 测试全绿 · template-audit 12/12
+
+**写作纪律**（本次踩过的坑）：`description` 必须 ≤165 字符 —— **`pnpm check-content` 的长度校验比 Zod 宽松，超限只有 `pnpm build` 才报**，所以写完一批要先 build 再提交。
 
 **竞品格局**：`drilltoearthscore.wiki`（2026-09-12 注册，真实数据但仅 14 职业、无上线日期）+ `drill-to-earths-core.fandom.com`（27 页，10 职业，已过时 6 个月）。我们的优势是**完整 26 职业 + 权威上线日期**。
 
