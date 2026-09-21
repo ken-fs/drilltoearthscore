@@ -54,6 +54,29 @@ pnpm preview        # 预览 dist/
 
 **封面**：不要手写 `image:` 到 frontmatter —— 直接跑 `pnpm gen-covers`，脚本会生成 1200×675 PNG 并回写 frontmatter（**已有 `image:` 的文章会被当成"用户自备封面"跳过**）。
 
+**官方美术素材（`src/assets/brand/`）** —— 封面不是纯文字卡片，而是**官方游戏截图 + 每页主题 badge 图标**：
+
+| 文件 | 来源 | 用途 |
+| --- | --- | --- |
+| `cover-bg.png` | Roblox 官方游戏缩略图 API | 所有封面的背景（压暗后铺底） |
+| `game-icon.png` | Roblox 官方游戏图标 API | 备用 |
+| `<category>-<slug>.png` × 22 | Roblox **badge 图标** API（122 个 badge 各有独立图标） | 每页右上角的主题配图 |
+
+**为什么不用竞品站的截图**：那是别人的版权素材，会带来 DMCA 风险，竞品反过来投诉比"没截图"严重得多。Roblox 的缩略图/badge 图标 API 返回的是**开发商自己上传的宣传素材**，粉丝站配免责声明使用是行业惯例。
+
+**拉素材的方法**（零 key）：
+```bash
+# 游戏缩略图（开发者上传的宣传图）
+curl "https://thumbnails.roblox.com/v1/games/multiget/thumbnails?universeIds=9796898051&size=768x432&format=Png&isCircular=false"
+# badge 图标 —— 注意：必须走 assets 端点 + iconImageId，
+# /v1/badges/icons 端点返回空数组；尺寸最大 512x512（720 报 400）
+curl "https://thumbnails.roblox.com/v1/assets?assetIds=<iconImageId>&size=512x512&format=Png&isCircular=false"
+```
+
+**换游戏建站时**：删掉 `src/assets/brand/` 全部文件 → `gen-covers` 自动回退到原来的纯渐变封面（不会报错）。要重新拉素材就按上面的映射，把 `<category>-<slug>` 换成新站的页面路径。
+
+**`public/images/hero.webp`**：首页/非文章页的默认 OG 图，用官方截图 + 轻度品牌遮罩合成（社交卡片实际只有 ~500px 宽，所以**不加角标、不加文字**，缩略后会变噪点）。
+
 **常用命令**：
 
 ```bash
