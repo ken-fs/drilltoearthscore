@@ -97,7 +97,8 @@ pnpm submit-indexnow -- --site https://drilltoearthscore.xyz   # 推送 URL 给 
 | **GitHub 仓库变量 `SITE_URL`** | ❌ **必设**，否则 CI `check` job 失败（不影响部署） |
 | GitHub 仓库变量 `INDEXNOW_KEY` | ⬜ 可选（不设则 IndexNow workflow 跳过） |
 | `www.drilltoearthscore.xyz` | ✅ 已绑定（生产），内容与 apex 完全一致，canonical 指向 apex 防重复内容 |
-| GSC 属性 `sc-domain:drilltoearthscore.xyz` | ⬜ 待接入 |
+| GSC 属性 `sc-domain:drilltoearthscore.xyz` | ✅ 已建，服务账号 `gsc-bot@ken-seo-tools` 已加为拥有者；sitemap 已提交（2026-09-21） |
+| GA4 `G-FBMCFJEM3S` | ⏳ 代码就位，待 Cloudflare 构建命令加 `PUBLIC_GA_ID` 后生效 |
 
 **线上验收结果（2026-09-20）**：
 
