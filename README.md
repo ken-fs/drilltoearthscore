@@ -96,7 +96,7 @@ pnpm submit-indexnow -- --site https://drilltoearthscore.xyz   # 推送 URL 给 
 | 自定义域 `drilltoearthscore.xyz` | ✅ 已绑定，HTTPS 200，Let's Encrypt 证书已签（至 2026-12-19） |
 | **GitHub 仓库变量 `SITE_URL`** | ❌ **必设**，否则 CI `check` job 失败（不影响部署） |
 | GitHub 仓库变量 `INDEXNOW_KEY` | ⬜ 可选（不设则 IndexNow workflow 跳过） |
-| `www.drilltoearthscore.xyz` | ⬜ 可选，尚未绑定（现在返回 1016） |
+| `www.drilltoearthscore.xyz` | ✅ 已绑定（生产），内容与 apex 完全一致，canonical 指向 apex 防重复内容 |
 | GSC 属性 `sc-domain:drilltoearthscore.xyz` | ⬜ 待接入 |
 
 **线上验收结果（2026-09-20）**：
@@ -110,6 +110,16 @@ robots.txt   Allow: / + Sitemap 指向正确
 JSON-LD      Organization + Article + BreadcrumbList + FAQPage(5 题)
 浏览器渲染   首页 / all-classes / layers-and-depths 均无报错
 部署标记     线上 commit SHA == 本地 HEAD
+证书 SAN     drilltoearthscore.xyz + *.drilltoearthscore.xyz（apex 与 www 都覆盖）
+```
+
+**排查线上问题的坑（重要）**：本机代理会把 `drilltoearthscore.xyz` / `www.drilltoearthscore.xyz` 的 DNS 劫持成 fake IP（`198.18.0.x` 段），导致 `dig` / `curl` 全部误报失败。**诊断域名问题必须绕过本地 DNS**：
+
+```bash
+# 拿真实解析
+curl -s -H "accept: application/dns-json" "https://cloudflare-dns.com/dns-query?name=drilltoearthscore.xyz&type=A"
+# 用真实 IP 绕过本地解析测试
+curl -s --resolve "drilltoearthscore.xyz:443:104.21.67.220" "https://drilltoearthscore.xyz/"
 ```
 
 **两个仓库变量怎么设**（Settings → Secrets and variables → Actions → **Variables** 标签页）：
