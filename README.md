@@ -2,7 +2,43 @@
 
 Roblox《Drill to Earth's Core》的粉丝 wiki 与攻略站。
 
-**域名**：https://drilltoearthscore.xyz（已购买，待接 Cloudflare）· **模板**：[AnvilWiki](https://github.com/PNGTRID/AnvilWiki)（MIT）
+**线上**：https://drilltoearthscore.xyz（apex + www 均已绑定）· **仓库**：ken-fs/drilltoearthscore · **模板**：[AnvilWiki](https://github.com/PNGTRID/AnvilWiki)（MIT）
+
+---
+
+## 📌 接手必读（2026-09-21 状态快照）
+
+| 项 | 状态 |
+| --- | --- |
+| 线上站点 | ✅ https://drilltoearthscore.xyz（apex + www，Let's Encrypt 覆盖 `*.drilltoearthscore.xyz`） |
+| 内容 | ✅ **22 篇 / 101 URL**，孤岛页 0，内链 3123 条全通 |
+| 视觉 | ✅ 封面 = 官方游戏截图铺底 + 每页主题 badge 图标；首页 hero = 官方实机截图 |
+| 部署 | ✅ Cloudflare Workers + Git 集成（push → 自动构建 → 自动部署） |
+| GA4 | ✅ `G-FBMCFJEM3S`（同意门控） |
+| GSC | ✅ `sc-domain:drilltoearthscore.xyz` + sitemap 已提交 |
+| 验收基线 | ✅ `verify-baseline.json` 已含 5 个关键页 |
+| **CI** | ⚠️ `check` job 红 —— GitHub 仓库变量 `SITE_URL` 未设（**不影响部署**，见下） |
+
+### 下一步（按优先级）
+
+1. **设 GitHub 仓库变量**（消除 CI 红灯）—— Settings → Secrets and variables → Actions → **Variables** 标签页：
+   ```
+   SITE_URL      = https://drilltoearthscore.xyz
+   INDEXNOW_KEY  = 99483352b40630153d5901e3a14ed160
+   ```
+2. **观察 GSC 收录**（1–3 天出展示数据，1–2 周出排名）—— 可跑 `node ~/Desktop/david/Ship/scripts/gsc.mjs inspect <url>` 查单个页
+3. **再补 15 个职业页**（racer / recruit / nightcrawler / crafter / gunsmith / priest / witch / salvager / prospector / samurai / lucky-looter / princess / pirate / executioner / bounty-hunter）—— ⚠️ **Fandom 没有这批数据**，需从创作者视频逐条提取，工作量大得多
+4. **内容保鲜** —— 游戏更新后要刷新数据页（职业上线节奏约每 1–2 周一个，从 badge API 可以监控）
+
+### 这个站的数据护城河
+
+| 来源 | 职业数 | 状态 |
+| --- | --- | --- |
+| Fandom `drill-to-earths-core.fandom.com` | 10 | 过时 6 个月 |
+| 竞品 `drilltoearthscore.wiki` | 14 | 无上线日期 |
+| **本 站** | **26 + 精确上线日期** | 权威（Roblox badge API） |
+
+**Roblox badge API 是本类站的权威数据源** —— 每个职业/实体解锁都有独立 badge，创建日期即上线日期。方法和坑见下方「内容工作流 → 数据来源纪律」。
 
 ---
 
