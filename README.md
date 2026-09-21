@@ -162,14 +162,20 @@ gh variable set INDEXNOW_KEY --body "99483352b40630153d5901e3a14ed160" -R ken-fs
 带 SITE_URL：    canonical ✅ + sitemap ✅ 全部 drilltoearthscore.xyz
 ```
 
-根因：`astro.config.ts` 的兜底写死 `'https://anvil.wiki'`（上游 demo 域名），与 `src/config/site.ts` 的兜底（`https://${site.domain}`）**不一致**。漏传 SITE_URL 时 canonical 看着是对的，只有 sitemap 静默指向别人家 —— 这个不一致值得上游修。
+根因：`astro.config.ts` 的兜底写死 `'https://anvil.wiki'`（上游 demo 域名），与 `src/config/site.ts` 的兜底（`https://${site.domain}`）**不一致**。漏传 SITE_URL 时 canonical 看着是对的，只有 sitemap 静默指向别人家。
 
-**Cloudflare 侧**（Workers 项目 → Settings → Build）：
+**已在本 fork 从根上修掉**（`astro.config.ts` 两处）：兜底改为 `https://${site.domain}`，从 `site.ts` 派生（单一真相源）。验证：不带任何 env 变量构建，sitemap 48 条仍全部指向本站。**这个修复值得推给上游** —— 它把「忘记传 SITE_URL」从静默 SEO 事故降级成无害默认值。
+
+**Cloudflare 侧**（Workers 项目 → 设置 → 构建）：
 
 ```
-构建命令  SITE_URL=https://drilltoearthscore.xyz pnpm run build
+构建命令  SITE_URL=https://drilltoearthscore.xyz PUBLIC_GA_ID=G-FBMCFJEM3S pnpm run build
 部署命令  npx wrangler deploy
 ```
+
+**Google Analytics**：模板的 GA 是**同意门控**的（`BaseLayout` 只定义 `window.__awLoadTrackers`，`CookieConsent` 在访客点接受后才动态注入 gtag）——所以**不要手贴 GA 的原始 snippet**，那样会绕过同意门控。正确做法就是构建命令里的 `PUBLIC_GA_ID=G-FBMCFJEM3S`；不设则整段不渲染、零 JS。
+
+⚠️ **`SITE_URL` 不能写进 `.env`**：`astro.config.ts` 在 Astro 加载 `.env` 之前就执行，`.env` 里的 `SITE_URL` 对 sitemap/site 配置**无效**（只对 `import.meta.env` 的 `PUBLIC_*` 有效）。`PUBLIC_GA_ID` 则**可以**放 `.env`（它走 `import.meta.env`）。
 
 首次推送后的 CI 实况：`e2e-template` ✅ · `ops-toolkit` ✅（typecheck + tests + build 全过）· `check` ❌（就是上面这个 SITE_URL）· `IndexNow` skipped。
 

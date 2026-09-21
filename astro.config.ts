@@ -170,7 +170,17 @@ function buildLastmodMap(
   return map;
 }
 
-const siteOrigin = process.env.SITE_URL || 'https://anvil.wiki';
+// FORK FIX (drilltoearthscore): the upstream fallback here was the hardcoded demo
+// domain 'https://anvil.wiki', which disagreed with src/config/site.ts (whose
+// fallback is `https://${site.domain}`). Because astro.config.ts is evaluated
+// BEFORE Astro loads .env, `process.env.SITE_URL` is empty in any build that
+// does not pass SITE_URL on the command line — and the sitemap then silently
+// advertised anvil.wiki while <link rel=canonical> (rendered from site.ts at
+// request time) stayed correct. A silent wrong-domain sitemap is the worst
+// possible failure mode (Google is handed a third party's URLs), so the
+// fallback now derives from site.ts — the single source of truth.
+import { site } from './src/config/site';
+const siteOrigin = process.env.SITE_URL || `https://${site.domain}`;
 
 // trailingSlash:'always' makes every generated URL end with "/", but the
 // lookup tables above (lastmodMap / noindexPaths / coverage keys) are built
@@ -225,7 +235,7 @@ function alternatesFor(pagePath: string): Array<{ lang: string; url: string }> |
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://anvil.wiki',
+  site: process.env.SITE_URL || `https://${site.domain}`,
   output: 'static',
   // Astro 7 flipped the default from true to 'jsx', which strips whitespace
   // between adjacent inline elements ("word" + "word" can render joined).
