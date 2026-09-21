@@ -113,13 +113,28 @@ JSON-LD      Organization + Article + BreadcrumbList + FAQPage(5 题)
 证书 SAN     drilltoearthscore.xyz + *.drilltoearthscore.xyz（apex 与 www 都覆盖）
 ```
 
-**排查线上问题的坑（重要）**：本机代理会把 `drilltoearthscore.xyz` / `www.drilltoearthscore.xyz` 的 DNS 劫持成 fake IP（`198.18.0.x` 段），导致 `dig` / `curl` 全部误报失败。**诊断域名问题必须绕过本地 DNS**：
+**排查线上问题的坑（重要）**：本机跑 Clash Verge（mihomo，TUN + fake-ip），会把域名 DNS 劫持成 `198.18.0.x` 假 IP，导致 `dig` / `curl` 全部误报失败 —— 包括连 `dig @1.1.1.1` 都被劫持。**诊断域名问题必须绕过本地 DNS**：
 
 ```bash
-# 拿真实解析
+# 拿真实解析（DoH）
 curl -s -H "accept: application/dns-json" "https://cloudflare-dns.com/dns-query?name=drilltoearthscore.xyz&type=A"
 # 用真实 IP 绕过本地解析测试
 curl -s --resolve "drilltoearthscore.xyz:443:104.21.67.220" "https://drilltoearthscore.xyz/"
+# 终极验证：用外部服务器抓（本地代理再坏也不影响结论）
+# tavily extract https://www.drilltoearthscore.xyz/classes/
+```
+
+**`www` 本地打不开、但线上正常**（2026-09-21 实例）：www 自定义域刚加时，Clash 对该子域的代理路由处于坏状态 —— apex 的 fake IP 能通、www 的 80/443 全挂，且刷新 fake-IP 缓存无效。**站本身没问题**（外部服务器抓取 www 返回 200，内容与 apex 一致）。两处修复：
+
+1. 立即：强制重载 Clash 内核 —— `curl -X PUT --unix-socket /tmp/verge/verge-mihomo.sock "http://localhost/configs?force=true"`（返回 204 即生效）
+2. 永久：把自有域名加进 Clash Verge 的 `profiles/Merge.yaml`，走 DIRECT 绕过代理
+
+```yaml
+prepend-rules:
+  - DOMAIN-SUFFIX,drilltoearthscore.xyz,DIRECT
+dns:
+  fake-ip-filter:
+    - "+.drilltoearthscore.xyz"
 ```
 
 **两个仓库变量怎么设**（Settings → Secrets and variables → Actions → **Variables** 标签页）：
