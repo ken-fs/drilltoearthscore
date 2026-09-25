@@ -3,7 +3,7 @@
   "site": {
     "name": "Drill to Earth's Core Wiki",
     "shortName": "Drill to Earth's Core",
-    "description": "Drill to Earth's Core guides: all 26 classes with Core prices, drill upgrade costs, layer depths, and a 100 KM run plan for the Roblox mining RPG.",
+    "description": "Drill to Earth's Core guides: all 27 classes with Core prices, drill upgrade costs, layer depths, and a 100 KM run plan for the Roblox mining RPG.",
     "tagline": "Dig deeper. Loot harder. Reach the core.",
     "legalNotice": "Fan-made resource. Not affiliated with Game Name. or Roblox Corporation."
   },
@@ -123,7 +123,7 @@
   "overview": {
     "classes": {
       "overviewTitle": "All Classes",
-      "overviewDescription": "All 26 Drill to Earth's Core classes with Core prices, release dates and roles — from Miner at 100 Cores to Goblin King, Bounty Hunter, Pirate and Executioner at 30,000."
+      "overviewDescription": "All 27 Drill to Earth's Core classes with Core prices, release dates and roles — from Miner at 100 Cores to Goblin King, Bounty Hunter, Pirate and Executioner at 30,000."
     },
     "guides": {
       "overviewTitle": "All Guides",
@@ -136,8 +136,8 @@
   },
   "home": {
     "meta": {
-      "title": "Drill to Earth's Core Wiki — Classes, Layers & Drill Upgrades",
-      "description": "Drill to Earth's Core guides: all 26 classes with Core prices, drill upgrade costs, layer depths, and a 100 KM run plan for the Roblox mining RPG."
+      "title": "Drill to Earth's Core Wiki — Classes, Layers & Upgrades (Roblox)",
+      "description": "Drill to Earth's Core (Roblox) guides: all 27 classes with Core prices, every layer depth, drill upgrade costs, and a 100 KM run plan — updated daily."
     },
     "updates": {
       "title": "Recent updates"
@@ -169,7 +169,7 @@
     "hero": {
       "badge": "Season 1",
       "title": "Drill to Earth's Core Wiki",
-      "description": "All 26 classes with Core prices, every layer depth and boss wall HP, full drill upgrade costs, and a 100 KM run plan — checked against the game's own unlock badges.",
+      "description": "All 27 classes with Core prices, every layer depth and boss wall HP, full drill upgrade costs, and a 100 KM run plan — checked against the game's own unlock badges.",
       "ctaPrimary": "Start with the basics",
       "ctaSecondary": "Browse all classes",
       "videoId": ""
@@ -187,7 +187,7 @@
         },
         {
           "number": "2",
-          "title": "All 26 classes",
+          "title": "All 27 classes",
           "description": "Miner at 100 Cores up to 30,000",
           "icon": "lucide:users",
           "href": "/classes/all-classes"
