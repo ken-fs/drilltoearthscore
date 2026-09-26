@@ -1,7 +1,7 @@
 {
   "version": 1,
   "entries": {
-    "en-classes-all-classes.png": "ca3ca38b",
+    "en-classes-all-classes.png": "8f62727e",
     "en-classes-best-classes.png": "d28f8782",
     "en-classes-bruiser.png": "0c8f2de9",
     "en-classes-demolitionist.png": "c633aca5",
@@ -23,6 +23,7 @@
     "en-items-armor-tiers.png": "37287452",
     "en-items-drill-upgrades.png": "ed78c4a0",
     "en-items-ores-and-bars.png": "c4229258",
+    "en-classes-mercenary.png": "6e928a24",
     "en-classes-bounty-hunter.png": "7b8cd170",
     "en-classes-crafter.png": "768b4bef",
     "en-classes-executioner.png": "c42790ca",
@@ -37,7 +38,6 @@
     "en-classes-recruit.png": "5f4e1e6f",
     "en-classes-salvager.png": "7e437b85",
     "en-classes-samurai.png": "ba74460b",
-    "en-classes-witch.png": "f09eb08f",
-    "en-classes-mercenary.png": "d4a20657"
+    "en-classes-witch.png": "f09eb08f"
   }
 }
