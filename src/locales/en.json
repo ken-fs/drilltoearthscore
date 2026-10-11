@@ -16,7 +16,8 @@
     "language": "Language",
     "classes": "Classes",
     "guides": "Guides",
-    "items": "Items"
+    "items": "Items",
+    "codes": "Codes"
   },
   "search": {
     "placeholder": "Search the wiki...",
@@ -132,6 +133,10 @@
     "items": {
       "overviewTitle": "All Items",
       "overviewDescription": "Drill to Earth's Core item data: every drill upgrade with its Coin cost, rarity and per-level effect, plus the three-card combo that breaks boss walls fastest."
+    },
+    "codes": {
+      "overviewTitle": "All Codes",
+      "overviewDescription": "Every working Drill to Earth’s Core code with its reward, re-checked against multiple trackers — and why most code lists for this game actually belong to a lookalike title."
     }
   },
   "home": {
