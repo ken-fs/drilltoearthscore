@@ -15,4 +15,6 @@
 
 **复查**：📅 2026-12-01（线上标题是不是 November / December；12-01 后巡检有没有点名这些页；GSC 这几页 28 天 CTR / 点击对比 11-17 前）
 
+**当天跟进**：20fd7d8：autopilot 复核职业榜单，unranked 段落和表格从 5 个新职业扩到 8 个（加 Timekeeper / Spider Queen / Hoarder），lastModified 改成 11-17，线上变成 November 2026。
+
 **结果**：（待补）
